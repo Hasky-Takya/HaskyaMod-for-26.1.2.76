@@ -27,8 +27,3 @@ NeoForged Discord: https://discord.neoforged.net/
 Links: 
 ==========
 https://github.com/Hasky-Takya/HaskyaMod
-
-Releases
-v1.0.0
-
-HaskyaMod-1.0.0.jar
