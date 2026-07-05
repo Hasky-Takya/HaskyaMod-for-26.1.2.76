@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "key": {
+    "S": "haskyamod:strawberry",
+    "X": "minecraft:milk_bucket"
+  },
+  "result": {
+    "id": "haskyamod:itigomilk",
+    "count": 1
+  }
+}

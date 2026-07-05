@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "haskyamod:item/midori_spawn_egg"
+  }
+}

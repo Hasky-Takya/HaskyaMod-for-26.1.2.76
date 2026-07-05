@@ -1,0 +1,102 @@
+{
+  "entity.midori.ambient": {
+    "sounds": [
+      "haskyamod:entity/midori/ambient1",
+      "haskyamod:entity/midori/ambient2",
+      "haskyamod:entity/midori/ambient3",
+      "haskyamod:entity/midori/ambient4",
+      "haskyamod:entity/midori/ambient5"
+    ]
+  },
+  "entity.midori.hurt": {
+    "sounds": [
+      "haskyamod:entity/midori/hurt1",
+      "haskyamod:entity/midori/hurt2"
+    ]
+  },
+  "entity.midori.death": {
+    "sounds": [
+      "haskyamod:entity/midori/death1"
+    ]
+  },
+  "entity.midori.heal": {
+    "sounds": [
+      "haskyamod:entity/midori/heal"
+    ]
+  },
+  "entity.momoi.ambient": {
+    "sounds": [
+      "haskyamod:entity/momoi/ambient1",
+      "haskyamod:entity/momoi/ambient2",
+      "haskyamod:entity/momoi/ambient3",
+      "haskyamod:entity/momoi/ambient4",
+      "haskyamod:entity/momoi/ambient5"
+    ]
+  },
+  "entity.momoi.hurt": {
+    "sounds": [
+      "haskyamod:entity/momoi/hurt1",
+      "haskyamod:entity/momoi/hurt2"
+    ]
+  },
+  "entity.momoi.death": {
+    "sounds": [
+      "haskyamod:entity/momoi/death1"
+    ]
+  },
+  "entity.momoi.heal": {
+    "sounds": [
+      "haskyamod:entity/momoi/heal"
+    ]
+  },
+  "entity.fuyu_momoi.ambient": {
+    "sounds": [
+      "haskyamod:entity/fuyu_momoi/ambient1",
+      "haskyamod:entity/fuyu_momoi/ambient2",
+      "haskyamod:entity/fuyu_momoi/ambient3",
+      "haskyamod:entity/fuyu_momoi/ambient4",
+      "haskyamod:entity/fuyu_momoi/ambient5"
+    ]
+  },
+  "entity.fuyu_momoi.hurt": {
+    "sounds": [
+      "haskyamod:entity/fuyu_momoi/hurt1",
+      "haskyamod:entity/fuyu_momoi/hurt2"
+    ]
+  },
+  "entity.fuyu_momoi.death": {
+    "sounds": [
+      "haskyamod:entity/fuyu_momoi/death1"
+    ]
+  },
+  "entity.fuyu_momoi.heal": {
+    "sounds": [
+      "haskyamod:entity/fuyu_momoi/heal"
+    ]
+  },
+  "entity.fuyu_midori.ambient": {
+    "sounds": [
+      "haskyamod:entity/fuyu_midori/ambient1",
+      "haskyamod:entity/fuyu_midori/ambient2",
+      "haskyamod:entity/fuyu_midori/ambient3",
+      "haskyamod:entity/fuyu_midori/ambient4",
+      "haskyamod:entity/fuyu_midori/ambient5"
+    ]
+  },
+  "entity.fuyu_midori.hurt": {
+    "sounds": [
+      "haskyamod:entity/fuyu_midori/hurt1",
+      "haskyamod:entity/fuyu_midori/hurt2"
+    ]
+  },
+  "entity.fuyu_midori.death": {
+    "sounds": [
+      "haskyamod:entity/fuyu_midori/death1"
+    ]
+  },
+  "entity.fuyu_midori.heal": {
+    "sounds": [
+      "haskyamod:entity/fuyu_midori/heal"
+    ]
+  }
+}

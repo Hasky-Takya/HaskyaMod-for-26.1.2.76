@@ -1,0 +1,23 @@
+{
+  "itemGroup.haskyamod": "Example Mod Tab",
+  "block.haskyamod.example_block": "Example Block",
+  "item.haskyamod.qinghuishi": "青辉石",
+  "item.haskyamod.strawberry": "草莓",
+  "item.haskyamod.itigomilk": "草莓牛奶",
+  "block.haskyamod.qinghuishi_ore": "青辉石矿",
+  "entity.haskyamod.fuyu_momoi": "冬装才羽桃井",
+  "item.haskyamod.fuyu_momoi_spawn_egg": "冬装才羽桃井刷怪蛋",
+  "entity.haskyamod.fuyu_midori": "冬装才羽绿",
+  "item.haskyamod.fuyu_midori_spawn_egg": "冬装才羽绿刷怪蛋",
+  "entity.haskyamod.momoi": "才羽桃井",
+  "item.haskyamod.momoi_spawn_egg": "才羽桃井刷怪蛋",
+  "entity.haskyamod.midori": "才羽绿",
+  "item.haskyamod.midori_spawn_egg": "才羽绿刷怪蛋",
+  "haskyamod.configuration.title": "Haskya Mod Configs",
+  "haskyamod.configuration.section.haskyamod.common.toml": "Haskya Mod Configs",
+  "haskyamod.configuration.section.haskyamod.common.toml.title": "Haskya Mod Configs",
+  "haskyamod.configuration.items": "Item List",
+  "haskyamod.configuration.logDirtBlock": "Log Dirt Block",
+  "haskyamod.configuration.magicNumberIntroduction": "Magic Number Text",
+  "haskyamod.configuration.magicNumber": "Magic Number"
+}
