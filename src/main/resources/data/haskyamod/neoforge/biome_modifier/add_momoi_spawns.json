@@ -3,7 +3,7 @@
   "biomes": "#c:is_overworld",
   "spawners": {
     "type": "haskyamod:momoi",
-    "weight": 2,
+    "weight": 10,
     "minCount": 1,
     "maxCount": 1
   }

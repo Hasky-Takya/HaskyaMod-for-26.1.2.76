@@ -176,9 +176,9 @@ public class MomoiEntity extends PathfinderMob implements HaskyaTameable {
 
             this.heal(6.0F);
             this.playSound(ModSounds.MOMOI_HEAL.get(), 1.0F, 1.0F);
-            if (this.level() instanceof ServerLevel serverLevel) {
-                serverLevel.sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + 1.0D, this.getZ(), 5, 0.4D, 0.5D, 0.4D, 0.0D);
-            }
+//            if (this.level() instanceof ServerLevel serverLevel) {
+//                serverLevel.sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + 1.0D, this.getZ(), 5, 0.4D, 0.5D, 0.4D, 0.0D);
+//            }
         }
 
         return this.level().isClientSide() ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;

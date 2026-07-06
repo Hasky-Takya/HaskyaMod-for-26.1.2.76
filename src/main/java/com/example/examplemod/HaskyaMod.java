@@ -1,5 +1,8 @@
 package com.example.examplemod;
 
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -14,6 +17,7 @@ import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.item.component.Consumables;
@@ -39,15 +43,23 @@ public class HaskyaMod {
     public static final String MODID = "haskyamod";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, MODID);
     // Create a Deferred Register to hold Items which will all be registered under the "haskyamod" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
+
+    public static final Holder<MobEffect> ARONA_BLESSING_EFFECT = MOB_EFFECTS.register("arona_blessing", () -> new AronaBlessingEffect(
+            //Can be either BENEFICIAL, NEUTRAL or HARMFUL. Used to determine the potion tooltip color of this effect.
+            MobEffectCategory.BENEFICIAL,
+            //The color of the effect particles in RGB format.
+            0xffffff
+    ));
 
     public static final DeferredItem<Item> QINGHUISHI = ITEMS.registerSimpleItem(
             "qinghuishi",
             () -> new Item.Properties().food(
                     new FoodProperties.Builder().alwaysEdible().nutrition(2).saturationModifier(2f).build(),
                     Consumables.defaultFood()
-                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.LUCK, 600, 2), 1.0f))
+                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(ARONA_BLESSING_EFFECT, 600, 0), 1.0f))
                             .build()
             )
     );
@@ -87,6 +99,7 @@ public class HaskyaMod {
             SpawnEggItem::new,
             () -> new Item.Properties().spawnEgg(ModEntities.MIDORI.get())
     );
+
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public HaskyaMod(IEventBus modEventBus, ModContainer modContainer)
@@ -96,6 +109,7 @@ public class HaskyaMod {
 
         // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
+        MOB_EFFECTS.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModSounds.register(modEventBus);

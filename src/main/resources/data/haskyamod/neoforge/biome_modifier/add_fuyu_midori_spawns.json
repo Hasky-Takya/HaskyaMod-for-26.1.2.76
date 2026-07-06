@@ -13,7 +13,7 @@
   ],
   "spawners": {
     "type": "haskyamod:fuyu_midori",
-    "weight": 4,
+    "weight": 10,
     "minCount": 1,
     "maxCount": 1
   }
