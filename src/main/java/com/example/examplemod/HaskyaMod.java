@@ -4,14 +4,16 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -21,7 +23,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.item.component.Consumables;
-import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -35,6 +36,7 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.world.item.alchemy.Potion;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(HaskyaMod.MODID)
@@ -44,6 +46,7 @@ public class HaskyaMod {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, MODID);
+    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(Registries.POTION, MODID);
     // Create a Deferred Register to hold Items which will all be registered under the "haskyamod" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
 
@@ -54,18 +57,32 @@ public class HaskyaMod {
             0xffffff
     ));
 
-    public static final DeferredItem<Item> QINGHUISHI = ITEMS.registerSimpleItem(
+    public static final Holder<MobEffect> JIULAN_CURSE_EFFECT = MOB_EFFECTS.register("jiulan_curse", () -> new JiulanCurseEffect(
+            MobEffectCategory.HARMFUL,
+            0x000000
+    ));
+
+    public static final Holder<MobEffect> QINGHUISHI_POTION_EFFECT = MOB_EFFECTS.register("qinghuishi_potion", () -> new QinghuishiPotionEffect(
+            MobEffectCategory.NEUTRAL,
+            0x66ccff
+    ));
+
+    //POTIONS is a DeferredRegister<Potion>
+    public static final Holder<Potion> QINGHUISHI_POTION = POTIONS.register("qinghuishi_potion", registryName -> new Potion(
+            // The suffix applied to the potion
+            registryName.getPath(),
+            // The effects used by the potion
+            new MobEffectInstance(QINGHUISHI_POTION_EFFECT, 1)
+    ));
+
+    public static final DeferredItem<Item> QINGHUISHI = ITEMS.registerItem(
             "qinghuishi",
-            () -> new Item.Properties().food(
-                    new FoodProperties.Builder().alwaysEdible().nutrition(2).saturationModifier(2f).build(),
-                    Consumables.defaultFood()
-                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(ARONA_BLESSING_EFFECT, 600, 0), 1.0f))
-                            .build()
-            )
+            QinghuishiItem::new,
+            () -> new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(10).saturationModifier(10f).build())
     );
     public static final DeferredItem<Item> STRAWBERRY = ITEMS.registerSimpleItem(
             "strawberry",
-            () -> new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(1).saturationModifier(2f).build())
+            () -> new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationModifier(2f).build())
     );
     public static final DeferredItem<Item> ITIGOMILK = ITEMS.registerItem(
             "itigomilk",
@@ -110,6 +127,7 @@ public class HaskyaMod {
         // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
         MOB_EFFECTS.register(modEventBus);
+        POTIONS.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModSounds.register(modEventBus);
@@ -193,10 +211,23 @@ public class HaskyaMod {
         Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
     }
 
+    @SubscribeEvent
+    public void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
+        PotionBrewing.Builder builder = event.getBuilder();
+
+        builder.addMix(
+                Potions.AWKWARD,
+                QINGHUISHI.get(),
+                QINGHUISHI_POTION
+        );
+    }
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
+
+
 }
