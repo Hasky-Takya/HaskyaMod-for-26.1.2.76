@@ -54,7 +54,7 @@ public class MomoiEntity extends PathfinderMob implements HaskyaTameable {
     }
 
     public static boolean checkMomoiSpawnRules(EntityType<MomoiEntity> entityType, ServerLevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random) {
-        return Mob.checkMobSpawnRules(entityType, level, spawnReason, pos, random);
+        return HaskyaSpawnRules.checkAnimalLikeSpawnRules(entityType, level, spawnReason, pos, random);
     }
 
     @Override

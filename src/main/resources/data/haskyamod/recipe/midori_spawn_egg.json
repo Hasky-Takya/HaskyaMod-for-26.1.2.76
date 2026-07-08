@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XAX",
+    "XSX",
+    "XBX"
+  ],
+  "key": {
+    "S": "haskyamod:strawberry",
+    "X": "haskyamod:qinghuishi",
+    "A": "minecraft:sugar_cane",
+    "B": "haskyamod:berry_pie"
+  },
+  "result": {
+    "id": "haskyamod:midori_spawn_egg",
+    "count": 1
+  }
+}

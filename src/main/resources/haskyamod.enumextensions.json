@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/entity/MobCategory",
+      "name": "haskyamod_students",
+      "constructor": "(Ljava/lang/String;IZZI)V",
+      "parameters": {
+        "class": "com/example/examplemod/ModMobCategories",
+        "field": "HASKYA_STUDENTS"
+      }
+    }
+  ]
+}

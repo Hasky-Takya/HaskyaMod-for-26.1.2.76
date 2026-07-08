@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XAX",
+    "XSX",
+    "XBX"
+  ],
+  "key": {
+    "S": "haskyamod:strawberry",
+    "X": "haskyamod:qinghuishi",
+    "A": "minecraft:sweet_berries",
+    "B": "minecraft:snow_block"
+  },
+  "result": {
+    "id": "haskyamod:fuyu_momoi_spawn_egg",
+    "count": 1
+  }
+}

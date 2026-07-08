@@ -84,6 +84,10 @@ public class HaskyaMod {
             "strawberry",
             () -> new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationModifier(2f).build())
     );
+    public static final DeferredItem<Item> BERRY_PIE = ITEMS.registerSimpleItem(
+            "berry_pie",
+            () -> new Item.Properties().food(new FoodProperties.Builder().nutrition(5).saturationModifier(5f).build())
+    );
     public static final DeferredItem<Item> ITIGOMILK = ITEMS.registerItem(
             "itigomilk",
             BucketDrinkItem::new,
@@ -148,6 +152,7 @@ public class HaskyaMod {
             event.accept(QINGHUISHI.get());
             event.accept(STRAWBERRY.get());
             event.accept(ITIGOMILK.get());
+            event.accept(BERRY_PIE.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(QINGHUISHI_ORE_ITEM.get());

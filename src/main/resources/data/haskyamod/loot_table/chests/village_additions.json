@@ -2,7 +2,7 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": 1,
+      "rolls": 2,
       "conditions": [
         {
           "condition": "minecraft:random_chance",
@@ -13,7 +13,7 @@
         {
           "type": "minecraft:item",
           "name": "haskyamod:strawberry",
-          "weight": 99,
+          "weight": 9,
           "functions": [
             {
               "function": "minecraft:set_count",

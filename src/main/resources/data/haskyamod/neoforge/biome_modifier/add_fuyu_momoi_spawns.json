@@ -13,7 +13,7 @@
   ],
   "spawners": {
     "type": "haskyamod:fuyu_momoi",
-    "weight": 10,
+    "weight": 1,
     "minCount": 1,
     "maxCount": 1
   }

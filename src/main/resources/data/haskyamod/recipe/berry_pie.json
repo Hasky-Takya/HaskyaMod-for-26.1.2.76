@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "BAC",
+    "   "
+  ],
+  "key": {
+    "A": "minecraft:sweet_berries",
+    "B": "minecraft:sugar",
+    "S": "minecraft:egg",
+    "C": "minecraft:wheat"
+  },
+  "result": {
+    "id": "haskyamod:berry_pie",
+    "count": 1
+  }
+}

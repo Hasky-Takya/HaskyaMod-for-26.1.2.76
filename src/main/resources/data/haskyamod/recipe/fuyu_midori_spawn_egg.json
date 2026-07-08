@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XAX",
+    "XSX",
+    "XBX"
+  ],
+  "key": {
+    "S": "haskyamod:strawberry",
+    "X": "haskyamod:qinghuishi",
+    "A": "minecraft:sugar_cane",
+    "B": "minecraft:snow_block"
+  },
+  "result": {
+    "id": "haskyamod:fuyu_midori_spawn_egg",
+    "count": 1
+  }
+}

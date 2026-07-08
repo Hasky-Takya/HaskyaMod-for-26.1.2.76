@@ -17,6 +17,9 @@ license="${mod_license}"
 # The modid of the mod
 modId="${mod_id}" #mandatory
 
+# Defines the custom mob category used by the student entities so they do not share vanilla animal caps.
+enumExtensions="${mod_id}.enumextensions.json"
+
 # The version number of the mod
 version="${mod_version}" #mandatory
 
