@@ -67,7 +67,8 @@ public class PickupNearbyItemsGoal extends Goal {
 
     @Override
     public void tick() {
-        if (this.targetItem == null) {
+        if (this.mob.level().isClientSide() || this.targetItem == null || !this.targetItem.isAlive()) {
+            this.targetItem = null;
             return;
         }
 
@@ -76,12 +77,21 @@ public class PickupNearbyItemsGoal extends Goal {
             return;
         }
 
-        ItemStack leftover = this.inventory.addItem(this.targetItem.getItem().copy());
+        ItemStack itemStack = this.targetItem.getItem();
+        if (itemStack.isEmpty() || !this.targetItemPredicate.test(itemStack) || !this.inventory.canAddItem(itemStack)) {
+            this.targetItem = null;
+            return;
+        }
+
+        ItemStack leftover = this.inventory.addItem(itemStack);
         if (leftover.isEmpty()) {
             this.targetItem.discard();
         } else {
             this.targetItem.setItem(leftover);
         }
+
+        this.targetItem = null;
+        this.mob.getNavigation().stop();
     }
 
     @Override

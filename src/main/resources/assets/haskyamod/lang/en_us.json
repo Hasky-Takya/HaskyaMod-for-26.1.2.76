@@ -20,6 +20,7 @@
   "item.minecraft.potion.effect.qinghuishi_potion": "Potion of Qinghuishi",
   "item.minecraft.splash_potion.effect.qinghuishi_potion": "Splash Potion of Qinghuishi",
   "item.minecraft.lingering_potion.effect.qinghuishi_potion": "Lingering Potion of Qinghuishi",
+  "container.haskyamod.pet_inventory": "%s's Inventory",
   "haskyamod.configuration.title": "Haskya Mod Configs",
   "haskyamod.configuration.section.haskyamod.common.toml": "Haskya Mod Configs",
   "haskyamod.configuration.section.haskyamod.common.toml.title": "Haskya Mod Configs",

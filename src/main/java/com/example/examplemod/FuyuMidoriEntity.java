@@ -38,7 +38,7 @@ public class FuyuMidoriEntity extends PathfinderMob implements HaskyaTameable {
 
     public SimpleContainer getInventory() {
         if (this.inventory == null) {
-            this.inventory = new SimpleContainer(18);
+            this.inventory = new SimpleContainer(27);
         }
         return this.inventory;
     }
@@ -62,7 +62,7 @@ public class FuyuMidoriEntity extends PathfinderMob implements HaskyaTameable {
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new PickupNearbyItemsGoal(this, this.getInventory(), stack -> stack.is(HaskyaMod.QINGHUISHI.get()), 1.8D));
-        this.goalSelector.addGoal(6, new DeliverInventoryToOwnerGoal(this, this, this.getInventory()));
+        this.goalSelector.addGoal(6, new DeliverInventoryToOwnerGoal(this, this, this.getInventory(), stack -> stack.is(HaskyaMod.QINGHUISHI.get())));
     }
 
     @Override
@@ -142,6 +142,17 @@ public class FuyuMidoriEntity extends PathfinderMob implements HaskyaTameable {
     @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
+        if (this.tamed) {
+            if (!this.isOwnedBy(player)) {
+                return this.level().isClientSide() ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
+            }
+
+            if (!stack.is(HaskyaMod.ITIGOMILK.get())) {
+                PetInventoryOpener.open(this, player, this.getInventory());
+                return this.level().isClientSide() ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
+            }
+        }
+
         if (!stack.is(HaskyaMod.ITIGOMILK.get())) {
             return super.mobInteract(player, hand);
         }
@@ -176,6 +187,13 @@ public class FuyuMidoriEntity extends PathfinderMob implements HaskyaTameable {
 //            if (this.level() instanceof ServerLevel serverLevel) {
 //                serverLevel.sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + 1.0D, this.getZ(), 5, 0.4D, 0.5D, 0.4D, 0.0D);
 //            }
+            if (this.tamed) {
+                if (this.isOwnedBy(player)) {
+                    if (this.level() instanceof ServerLevel serverLevel) {
+                        serverLevel.sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + 1.0D, this.getZ(), 5, 0.4D, 0.5D, 0.4D, 0.0D);
+                    }
+                }
+            }
         }
 
         return this.level().isClientSide() ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;

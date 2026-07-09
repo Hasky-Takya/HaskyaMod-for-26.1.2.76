@@ -20,6 +20,7 @@
   "item.minecraft.potion.effect.qinghuishi_potion": "青辉石药水",
   "item.minecraft.splash_potion.effect.qinghuishi_potion": "喷溅型青辉石药水",
   "item.minecraft.lingering_potion.effect.qinghuishi_potion": "滞留型青辉石药水",
+  "container.haskyamod.pet_inventory": "%s的背包",
   "haskyamod.configuration.title": "Haskya Mod Configs",
   "haskyamod.configuration.section.haskyamod.common.toml": "Haskya Mod Configs",
   "haskyamod.configuration.section.haskyamod.common.toml.title": "Haskya Mod Configs",

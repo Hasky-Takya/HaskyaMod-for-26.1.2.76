@@ -9,18 +9,27 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Predicate;
+
+import static com.example.examplemod.HaskyaMod.QINGHUISHI;
+
 public class DeliverInventoryToOwnerGoal extends Goal {
     private static final int CHECK_INTERVAL_TICKS = 100;
 
     private final PathfinderMob mob;
     private final HaskyaTameable tameable;
     private final SimpleContainer inventory;
+    private final Predicate<ItemStack> targetItemPredicate;
+    private ItemEntity targetItem;
     private int cooldown;
 
-    public DeliverInventoryToOwnerGoal(PathfinderMob mob, HaskyaTameable tameable, SimpleContainer inventory) {
+    public DeliverInventoryToOwnerGoal(PathfinderMob mob, HaskyaTameable tameable, SimpleContainer inventory, Predicate<ItemStack> targetItemPredicate) {
         this.mob = mob;
         this.tameable = tameable;
         this.inventory = inventory;
+        this.targetItemPredicate = targetItemPredicate;
     }
 
     @Override
@@ -48,6 +57,10 @@ public class DeliverInventoryToOwnerGoal extends Goal {
         for (int slot = 0; slot < this.inventory.getContainerSize(); slot++) {
             ItemStack stack = this.inventory.removeItemNoUpdate(slot);
             if (stack.isEmpty()) {
+                continue;
+            }
+            if (!stack.is(QINGHUISHI)) {
+                this.inventory.addItem(stack);
                 continue;
             }
 
