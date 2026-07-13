@@ -20,6 +20,6 @@ public final class HaskyaSpawnRules {
             RandomSource random
     ) {
         boolean brightEnough = EntitySpawnReason.ignoresLightRequirements(spawnReason) || level.getRawBrightness(pos, 0) > 8;
-        return level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && brightEnough && random.nextInt(2000) == 0;
+        return level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && brightEnough && random.nextInt(200) == 0;
     }
 }

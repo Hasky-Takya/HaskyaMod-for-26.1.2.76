@@ -3,6 +3,7 @@ package com.example.examplemod;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -39,15 +40,7 @@ public final class HaskyaMobDeathEventHandler {
         }
     }
 
-    private static void onFuyuMomoiDeath(FuyuMomoiEntity entity, ServerLevel level, LivingDeathEvent event) {
-        // Fuyu Momoi-specific death logic goes here.
-        if (!entity.isTamed()) {
-            return;
-        }
-        if (!(entity.level() instanceof ServerLevel serverLevel)) {
-            return;
-        }
-        SimpleContainer inventory = entity.getInventory();
+    private static void generalDeath(PathfinderMob entity, SimpleContainer inventory, ServerLevel serverLevel, LivingDeathEvent event) {
         for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
             ItemStack stack = inventory.removeItemNoUpdate(slot);
             if (stack.isEmpty()) {
@@ -80,6 +73,18 @@ public final class HaskyaMobDeathEventHandler {
                 }
             }
         }
+    }
+
+    private static void onFuyuMomoiDeath(FuyuMomoiEntity entity, ServerLevel level, LivingDeathEvent event) {
+        // Fuyu Momoi-specific death logic goes here.
+        if (!entity.isTamed()) {
+            return;
+        }
+        if (!(entity.level() instanceof ServerLevel serverLevel)) {
+            return;
+        }
+        SimpleContainer inventory = entity.getInventory();
+        generalDeath(entity, inventory, level, event);
     }
 
     private static void onFuyuMidoriDeath(FuyuMidoriEntity entity, ServerLevel level, LivingDeathEvent event) {
@@ -91,38 +96,7 @@ public final class HaskyaMobDeathEventHandler {
             return;
         }
         SimpleContainer inventory = entity.getInventory();
-        for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
-            ItemStack stack = inventory.removeItemNoUpdate(slot);
-            if (stack.isEmpty()) {
-                continue;
-            }
-            if (getKiller(event).hasEffect(ARONA_BLESSING_EFFECT) && getKiller(event).hasEffect(JIULAN_CURSE_EFFECT)) {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                if (itemEntity != null) {
-                    Vec3 direction = entity.position().subtract(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ());
-                    itemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-            else if (getKiller(event).hasEffect(ARONA_BLESSING_EFFECT)) {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                ItemStack copiedStack = itemEntity.getItem().copy();
-                ItemEntity copiedItemEntity = entity.spawnAtLocation(serverLevel, copiedStack, 0.6F);
-                if (copiedItemEntity != null) {
-                    Vec3 direction = entity.position().subtract(copiedItemEntity.getX(), copiedItemEntity.getY(), copiedItemEntity.getZ());
-                    copiedItemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-            else if (getKiller(event).hasEffect(JIULAN_CURSE_EFFECT)) {
-                return;
-            }
-            else {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                if (itemEntity != null) {
-                    Vec3 direction = entity.position().subtract(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ());
-                    itemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-        }
+        generalDeath(entity, inventory, level, event);
     }
 
     private static void onMomoiDeath(MomoiEntity entity, ServerLevel level, LivingDeathEvent event) {
@@ -134,38 +108,7 @@ public final class HaskyaMobDeathEventHandler {
             return;
         }
         SimpleContainer inventory = entity.getInventory();
-        for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
-            ItemStack stack = inventory.removeItemNoUpdate(slot);
-            if (stack.isEmpty()) {
-                continue;
-            }
-            if (getKiller(event).hasEffect(ARONA_BLESSING_EFFECT) && getKiller(event).hasEffect(JIULAN_CURSE_EFFECT)) {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                if (itemEntity != null) {
-                    Vec3 direction = entity.position().subtract(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ());
-                    itemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-            else if (getKiller(event).hasEffect(ARONA_BLESSING_EFFECT)) {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                ItemStack copiedStack = itemEntity.getItem().copy();
-                ItemEntity copiedItemEntity = entity.spawnAtLocation(serverLevel, copiedStack, 0.6F);
-                if (copiedItemEntity != null) {
-                    Vec3 direction = entity.position().subtract(copiedItemEntity.getX(), copiedItemEntity.getY(), copiedItemEntity.getZ());
-                    copiedItemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-            else if (getKiller(event).hasEffect(JIULAN_CURSE_EFFECT)) {
-                return;
-            }
-            else {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                if (itemEntity != null) {
-                    Vec3 direction = entity.position().subtract(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ());
-                    itemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-        }
+        generalDeath(entity, inventory, level, event);
     }
 
     private static void onMidoriDeath(MidoriEntity entity, ServerLevel level, LivingDeathEvent event) {
@@ -177,38 +120,7 @@ public final class HaskyaMobDeathEventHandler {
             return;
         }
         SimpleContainer inventory = entity.getInventory();
-        for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
-            ItemStack stack = inventory.removeItemNoUpdate(slot);
-            if (stack.isEmpty()) {
-                continue;
-            }
-            if (getKiller(event).hasEffect(ARONA_BLESSING_EFFECT) && getKiller(event).hasEffect(JIULAN_CURSE_EFFECT)) {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                if (itemEntity != null) {
-                    Vec3 direction = entity.position().subtract(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ());
-                    itemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-            else if (getKiller(event).hasEffect(ARONA_BLESSING_EFFECT)) {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                ItemStack copiedStack = itemEntity.getItem().copy();
-                ItemEntity copiedItemEntity = entity.spawnAtLocation(serverLevel, copiedStack, 0.6F);
-                if (copiedItemEntity != null) {
-                    Vec3 direction = entity.position().subtract(copiedItemEntity.getX(), copiedItemEntity.getY(), copiedItemEntity.getZ());
-                    copiedItemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-            else if (getKiller(event).hasEffect(JIULAN_CURSE_EFFECT)) {
-                return;
-            }
-            else {
-                ItemEntity itemEntity = entity.spawnAtLocation(serverLevel, stack, 0.6F);
-                if (itemEntity != null) {
-                    Vec3 direction = entity.position().subtract(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ());
-                    itemEntity.setDeltaMovement(direction.x, 0.25D, direction.z);
-                }
-            }
-        }
+        generalDeath(entity, inventory, level, event);
     }
 
     private static void onAnyHaskyaStudentDeath(LivingEntity entity, ServerLevel level, LivingDeathEvent event) {

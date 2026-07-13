@@ -9,7 +9,7 @@ public final class ModMobCategories {
             "haskyamod:students",
             1,
             true,
-            true,
+            false,
             128
     );
 
