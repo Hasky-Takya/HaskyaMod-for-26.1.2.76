@@ -98,5 +98,30 @@
     "sounds": [
       "haskyamod:entity/fuyu_midori/heal"
     ]
+  },
+  "entity.yuuka.ambient": {
+    "sounds": [
+      "haskyamod:entity/yuuka/ambient1",
+      "haskyamod:entity/yuuka/ambient2",
+      "haskyamod:entity/yuuka/ambient3",
+      "haskyamod:entity/yuuka/ambient4",
+      "haskyamod:entity/yuuka/ambient5"
+    ]
+  },
+  "entity.yuuka.hurt": {
+    "sounds": [
+      "haskyamod:entity/yuuka/hurt1",
+      "haskyamod:entity/yuuka/hurt2"
+    ]
+  },
+  "entity.yuuka.death": {
+    "sounds": [
+      "haskyamod:entity/yuuka/death1"
+    ]
+  },
+  "entity.yuuka.heal": {
+    "sounds": [
+      "haskyamod:entity/yuuka/heal"
+    ]
   }
 }

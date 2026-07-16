@@ -14,6 +14,8 @@
   "item.haskyamod.momoi_spawn_egg": "才羽桃井刷怪蛋",
   "entity.haskyamod.midori": "才羽绿",
   "item.haskyamod.midori_spawn_egg": "才羽绿刷怪蛋",
+  "entity.haskyamod.yuuka": "早濑优香",
+  "item.haskyamod.yuuka_spawn_egg": "早濑优香刷怪蛋",
   "effect.haskyamod.arona_blessing": "阿洛娜的祝福",
   "effect.haskyamod.jiulan_curse": "九蓝一金的诅咒",
   "effect.haskyamod.qinghuishi_potion": "50%概率祝福，50%概率诅咒",
@@ -27,5 +29,6 @@
   "haskyamod.configuration.items": "Item List",
   "haskyamod.configuration.logDirtBlock": "Log Dirt Block",
   "haskyamod.configuration.magicNumberIntroduction": "Magic Number Text",
-  "haskyamod.configuration.magicNumber": "Magic Number"
+  "haskyamod.configuration.magicNumber": "Magic Number",
+  "death.attack.haskyamod.yuuka_attack": "%1$s 因为惹怒100kg被压扁了"
 }

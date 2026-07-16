@@ -63,6 +63,19 @@ public class ModEntities {
                             .updateInterval(3)
             );
 
+
+    public static final Supplier<EntityType<YuukaEntity>> YUUKA =
+            ENTITY_TYPES.registerEntityType(
+                    "yuuka",
+                    YuukaEntity::new,
+                    ModMobCategories.haskyaStudents(),
+                    builder -> builder
+                            .sized(0.6F, 1.8F)
+                            .eyeHeight(1.62F)
+                            .clientTrackingRange(8)
+                            .updateInterval(3)
+            );
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

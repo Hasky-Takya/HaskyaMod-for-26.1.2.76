@@ -37,6 +37,9 @@ public final class HaskyaMobDeathEventHandler {
         } else if (event.getEntity() instanceof MidoriEntity entity) {
             onMidoriDeath(entity, serverLevel, event);
             onAnyHaskyaStudentDeath(entity, serverLevel, event);
+        }  else if (event.getEntity() instanceof YuukaEntity entity) {
+            onYuukaDeath(entity, serverLevel, event);
+            onAnyHaskyaStudentDeath(entity, serverLevel, event);
         }
     }
 
@@ -113,6 +116,17 @@ public final class HaskyaMobDeathEventHandler {
 
     private static void onMidoriDeath(MidoriEntity entity, ServerLevel level, LivingDeathEvent event) {
         // Midori-specific death logic goes here.
+        if (!entity.isTamed()) {
+            return;
+        }
+        if (!(entity.level() instanceof ServerLevel serverLevel)) {
+            return;
+        }
+        SimpleContainer inventory = entity.getInventory();
+        generalDeath(entity, inventory, level, event);
+    }
+
+    private static void onYuukaDeath(YuukaEntity entity, ServerLevel level, LivingDeathEvent event) {
         if (!entity.isTamed()) {
             return;
         }

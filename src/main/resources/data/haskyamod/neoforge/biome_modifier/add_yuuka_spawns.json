@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_overworld",
+  "spawners": {
+    "type": "haskyamod:yuuka",
+    "weight": 1,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

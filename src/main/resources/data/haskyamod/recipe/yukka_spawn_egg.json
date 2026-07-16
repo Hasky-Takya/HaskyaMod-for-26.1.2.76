@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XAX",
+    "XSX",
+    "XBX"
+  ],
+  "key": {
+    "S": "haskyamod:strawberry",
+    "X": "haskyamod:qinghuishi",
+    "A": "minecraft:allium",
+    "B": "haskyamod:berry_pie"
+  },
+  "result": {
+    "id": "haskyamod:yuuka_spawn_egg",
+    "count": 1
+  }
+}

@@ -43,5 +43,6 @@ public class HaskyaModClient {
         event.registerEntityRenderer(ModEntities.FUYU_MIDORI.get(), FuyuMidoriRenderer::new);
         event.registerEntityRenderer(ModEntities.MOMOI.get(), MomoiRenderer::new);
         event.registerEntityRenderer(ModEntities.MIDORI.get(), MidoriRenderer::new);
+        event.registerEntityRenderer(ModEntities.YUUKA.get(), YuukaRenderer::new);
     }
 }

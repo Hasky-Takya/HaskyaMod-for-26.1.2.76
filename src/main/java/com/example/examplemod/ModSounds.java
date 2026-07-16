@@ -31,6 +31,11 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> MIDORI_DEATH = registerSoundEvent("entity.midori.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> MIDORI_HEAL = registerSoundEvent("entity.midori.heal");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> YUUKA_AMBIENT = registerSoundEvent("entity.yuuka.ambient");
+    public static final DeferredHolder<SoundEvent, SoundEvent> YUUKA_HURT = registerSoundEvent("entity.yuuka.hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> YUUKA_DEATH = registerSoundEvent("entity.yuuka.death");
+    public static final DeferredHolder<SoundEvent, SoundEvent> YUUKA_HEAL = registerSoundEvent("entity.yuuka.heal");
+
     private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(
                 Identifier.fromNamespaceAndPath(HaskyaMod.MODID, name)

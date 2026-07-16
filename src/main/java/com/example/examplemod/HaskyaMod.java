@@ -120,6 +120,11 @@ public class HaskyaMod {
             SpawnEggItem::new,
             () -> new Item.Properties().spawnEgg(ModEntities.MIDORI.get())
     );
+    public static final DeferredItem<SpawnEggItem> YUUKA_SPAWN_EGG = ITEMS.registerItem(
+            "yuuka_spawn_egg",
+            SpawnEggItem::new,
+            () -> new Item.Properties().spawnEgg(ModEntities.YUUKA.get())
+    );
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -162,6 +167,7 @@ public class HaskyaMod {
             event.accept(MOMOI_SPAWN_EGG.get());
             event.accept(MIDORI_SPAWN_EGG.get());
             event.accept(FUYU_MIDORI_SPAWN_EGG.get());
+            event.accept(YUUKA_SPAWN_EGG.get());
         }
     }
 
@@ -170,6 +176,7 @@ public class HaskyaMod {
         event.put(ModEntities.MOMOI.get(), MomoiEntity.createAttributes().build());
         event.put(ModEntities.MIDORI.get(), MidoriEntity.createAttributes().build());
         event.put(ModEntities.FUYU_MIDORI.get(), FuyuMidoriEntity.createAttributes().build());
+        event.put(ModEntities.YUUKA.get(), YuukaEntity.createAttributes().build());
     }
 
     private void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
@@ -199,6 +206,13 @@ public class HaskyaMod {
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 MidoriEntity::checkMidoriSpawnRules,
+                RegisterSpawnPlacementsEvent.Operation.REPLACE
+        );
+        event.register(
+                ModEntities.YUUKA.get(),
+                SpawnPlacementTypes.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                YuukaEntity::checkYuukaSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE
         );
     }
