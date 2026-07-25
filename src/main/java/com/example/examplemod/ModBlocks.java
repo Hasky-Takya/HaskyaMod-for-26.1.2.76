@@ -1,5 +1,7 @@
 package com.example.examplemod;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
@@ -17,6 +19,15 @@ public class ModBlocks {
                     .strength(3.0f, 3.0f)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
+    );
+
+    public static final DeferredBlock<Block> QINGHUISHI_BLOCK = BLOCKS.register(
+            "qinghuishi_block",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, registryName))
+                    .destroyTime(2.0F)
+                    .lightLevel(state -> 7)
+                    .sound(SoundType.IRON))
     );
 
     public static void register(IEventBus eventBus) {

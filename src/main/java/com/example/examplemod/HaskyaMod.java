@@ -1,12 +1,17 @@
 package com.example.examplemod;
 
 import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -14,6 +19,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -49,6 +55,7 @@ public class HaskyaMod {
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(Registries.POTION, MODID);
     // Create a Deferred Register to hold Items which will all be registered under the "haskyamod" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 
     public static final Holder<MobEffect> ARONA_BLESSING_EFFECT = MOB_EFFECTS.register("arona_blessing", () -> new AronaBlessingEffect(
             //Can be either BENEFICIAL, NEUTRAL or HARMFUL. Used to determine the potion tooltip color of this effect.
@@ -75,10 +82,23 @@ public class HaskyaMod {
             new MobEffectInstance(QINGHUISHI_POTION_EFFECT, 1)
     ));
 
+
+
+    public static final DeferredItem<BlockItem> QINGHUISHI_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(ModBlocks.QINGHUISHI_BLOCK, () -> new Item.Properties());
+
     public static final DeferredItem<Item> QINGHUISHI = ITEMS.registerItem(
             "qinghuishi",
             QinghuishiItem::new,
             () -> new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(10).saturationModifier(10f).build())
+    );
+    public static final DeferredItem<Item> QINGHUISHI_SWORD = ITEMS.registerSimpleItem(
+            "qinghuishi_sword",
+            () -> new Item.Properties().sword(ModToolMaterials.QINGHUISHI, 6.0F, -2.4F)
+    );
+    public static final DeferredItem<QinghuishiAxeItem> QINGHUISHI_AXE = ITEMS.registerItem(
+            "qinghuishi_axe",
+            QinghuishiAxeItem::new,
+            Item.Properties::new
     );
     public static final DeferredItem<Item> STRAWBERRY = ITEMS.registerSimpleItem(
             "strawberry",
@@ -94,7 +114,7 @@ public class HaskyaMod {
             () -> new Item.Properties()
                     .stacksTo(1)
                     .food(
-                            new FoodProperties.Builder().alwaysEdible().nutrition(5).saturationModifier(2f).build(),
+                            new FoodProperties.Builder().alwaysEdible().nutrition(5).saturationModifier(5f).build(),
                             Consumables.DEFAULT_DRINK
                     )
                     .usingConvertsTo(Items.BUCKET)
@@ -154,13 +174,21 @@ public class HaskyaMod {
 
     private void addFoodCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            event.accept(QINGHUISHI.get());
             event.accept(STRAWBERRY.get());
             event.accept(ITIGOMILK.get());
             event.accept(BERRY_PIE.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(QINGHUISHI_ORE_ITEM.get());
+            event.accept(QINGHUISHI_BLOCK_ITEM.get());
+            event.accept(QINGHUISHI.get());
+        }
+        else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(QINGHUISHI_SWORD.get());
+            event.accept(QINGHUISHI_AXE.get());
+        }
+        else if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(QINGHUISHI_AXE.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
             event.accept(FUYU_MOMOI_SPAWN_EGG.get());

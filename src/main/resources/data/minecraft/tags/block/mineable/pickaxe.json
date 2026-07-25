@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "haskyamod:qinghuishi_ore"
+    "haskyamod:qinghuishi_ore",
+    "haskyamod:qinghuishi_block"
   ]
 }

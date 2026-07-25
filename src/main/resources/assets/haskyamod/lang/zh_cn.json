@@ -2,10 +2,13 @@
   "itemGroup.haskyamod": "Example Mod Tab",
   "block.haskyamod.example_block": "Example Block",
   "item.haskyamod.qinghuishi": "青辉石",
+  "item.haskyamod.qinghuishi_sword": "青辉石剑",
+  "item.haskyamod.qinghuishi_axe": "青辉石斧",
   "item.haskyamod.strawberry": "草莓",
   "item.haskyamod.berry_pie": "甜浆果派",
   "item.haskyamod.itigomilk": "草莓牛奶",
   "block.haskyamod.qinghuishi_ore": "青辉石矿",
+  "block.haskyamod.qinghuishi_block": "青辉石块",
   "entity.haskyamod.fuyu_momoi": "冬装才羽桃井",
   "item.haskyamod.fuyu_momoi_spawn_egg": "冬装才羽桃井刷怪蛋",
   "entity.haskyamod.fuyu_midori": "冬装才羽绿",
@@ -30,5 +33,5 @@
   "haskyamod.configuration.logDirtBlock": "Log Dirt Block",
   "haskyamod.configuration.magicNumberIntroduction": "Magic Number Text",
   "haskyamod.configuration.magicNumber": "Magic Number",
-  "death.attack.haskyamod.yuuka_attack": "%1$s 因为惹怒100kg被压扁了"
+  "death.attack.haskyamod.yuuka_attack": "%1$s 因为招惹100kg被压扁了"
 }
